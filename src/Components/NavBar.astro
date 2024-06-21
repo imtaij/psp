@@ -1,0 +1,43 @@
+---
+import { menu } from "../Data/data";
+---
+
+<nav class="bg-gradient-to-r from-amber-500 to-pink-500 text-white mx-auto flex justify-center" >
+  <div class="navbar  max-w-6xl">
+    <div class="flex-1">
+      <a class="btn btn-ghost text-xl" href="/">Coin Master Spins</a>
+    </div>
+    <div class="flex-none gap-2">
+      <div class="dropdown dropdown-end">
+        <label tabindex="0" class="btn btn-ghost btn-circle avatar">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 24 24"
+            ><g
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-width="1.5"
+              ><path d="M20 7H4"></path><path d="M20 12H4" opacity=".5"
+              ></path><path d="M20 17H4"></path></g
+            ></svg
+          >
+        </label>
+        <ul
+          tabindex="0"
+          class="mt-3 z-[500] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 text-black"
+        >
+          {
+            menu.map((item, index) => (
+              <li>
+                <a href={item.path}>{item.title}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

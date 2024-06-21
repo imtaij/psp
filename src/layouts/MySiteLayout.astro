@@ -1,0 +1,84 @@
+---
+import Footer from "../Components/footer.astro";
+import NavBar from "../Components/NavBar.astro";
+import { GoogleAnalytics } from "astro-google-analytics";
+import { Schema } from "astro-seo-schema";
+
+export interface Props {
+  title: string;
+  description: string;
+  page: boolean;
+  frontmatter: {
+    title: string;
+    description: string;
+    page: boolean;
+  };
+}
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+
+const { title, page, description } = Astro.props.frontmatter || Astro.props;
+---
+
+<html lang="en" class="m-auto" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name='robots' content='noindex, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' />
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <link rel="icon" href="/favicon.ico" />
+    
+    <!-- Seo meta tags -->
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/Coin-Master-Free-Spins.jpg" />
+    <meta property="og:url" content={canonicalURL.href} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Coin Master Spins" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="/Coin-Master-Free-Spins.jpg" />
+    <meta name="twitter:image:alt" content={title} />
+    <meta name="twitter:domain" content={canonicalURL.origin} />
+    <meta name="twitter:url" content={canonicalURL.href} />
+    <link rel="canonical" href={canonicalURL.href} />
+
+    <!-- apple -->
+    <meta name="apple-mobile-web-app-title" content={title} />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" />
+
+    <!-- android -->
+    <!-- theme color -->
+    <meta name="theme-color" content="#3b82f6" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content={title} />
+
+    <!-- Google Analytics -->
+    <GoogleAnalytics id="G-NLZX0JJEN1" />
+
+<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=657452af088a0f0019878cf9&product=sticky-share-buttons&source=platform" async="async"></script>
+
+  </head>
+  <body class="mx-auto">
+    <!-- Top line bar -->
+    <!-- <div class="bg-gradient-to-r from-blue-400 to-purple-500 h-1 w-full"></div> -->
+    <div></div>
+    <header class=" mx-auto">
+      <NavBar />
+    </header>
+    <!-- Tailwind Typograpy used visit for more detail https://tailwindcss.com/docs/typography-plugin  &  https://daisyui.com/docs/layout-and-typography/-->
+    <div
+      class="mx-auto p-2 prose prose-h1:font-medium prose-a:no-underline prose-lg max-w-full prose-img:m-0 prose-li:m-1 prose-ul:m-0"
+    >
+      <slot />
+    </div>
+<div class="sharethis-sticky-share-buttons"></div>
+    <Footer />
+
+    <!-- Bottom line bar -->
+    <!-- <div class="bg-gradient-to-r from-blue-400 to-purple-500 h-1 w-full"></div> -->
+  </body>
+</html>
